@@ -27,9 +27,17 @@ const registerUser = asyncHandler(async (req, res) =>{
     });
 
     if(user){
-        res.status()
+        res.status(201).json({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            password: user.password
+        });
+    }else{
+        res.status(400);
+        throw new Error('Invalid user data');
+        
     }
-    res.status(200).json({ message: 'Register User' })
 });
 
 // @desc   log out a user 
